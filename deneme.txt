@@ -1,0 +1,44 @@
+void	player_check(t_map *heap)
+{
+	int	i;
+	int	count;
+	int	flag1;
+	int	flag2;
+
+	count = 0;
+	i = 0;
+	while (heap->map_line[i])
+	{
+		if (heap->map_line[i] == 'P')
+			break ;
+		if (heap->map_line[i] == '\n')
+			count++;
+		i++;
+	}
+	heap->object->p_location = i;
+	heap->object->top_line = heap->object->p_location - heap->width - 1;
+	heap->object->bottom_line = heap->object->p_location + heap->width + 1;
+	flag1 = 0;
+	flag2 = 0;
+	i = 0;
+	while (heap->map_line[i])
+	{
+		//printf("%c",heap->map_line[heap->object->bottom_line]);
+		if (heap->map_line[heap->object->p_location + 1] == '1'
+			&& heap->map_line[heap->object->bottom_line - 1] == '1')
+			flag1++;
+		if (heap->map_line[heap->object->top_line] == '1'
+			&& heap->map_line[heap->object->bottom_line] == '1')
+			flag2++;
+		i++;
+	}
+	if (flag1 == flag2)
+		ft_error(heap);
+	printf("\n");
+	printf("%d\n",flag1);
+	printf("%d\n",flag2);
+	printf("%d\n",heap->object->p_location);
+	printf("%d\n",count);
+	printf("%d\n",i - count);
+	printf("%d",heap->width);
+}
