@@ -6,10 +6,8 @@ void	map_exit_check(int i, int j, t_path *path)
 	ft_path_find(path);
 }
 
-void	init_matrix(t_path *path)
+void	init_matrix(int exit_i, int exit_j, t_path *path)
 {
-	static int	exit_i;
-	static int	exit_j;
 	int			i;
 	int			j;
 
@@ -38,7 +36,10 @@ void	init_matrix(t_path *path)
 
 void	accessible_check(t_map *heap, t_path *path)
 {
+	static int	exit_i;
+	static int	exit_j;
+
 	path->mat_y = heap->height;
 	path->mat_x = heap->width;
-	init_matrix(path);
+	init_matrix(exit_i, exit_j, path);
 }
