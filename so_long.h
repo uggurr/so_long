@@ -6,6 +6,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <stdlib.h>
+# include "./mlx/mlx.h"
 
 typedef struct s_object
 {
@@ -22,10 +23,22 @@ typedef struct s_path
 	int		mat_x;
 }				t_path;
 
+typedef struct s_img
+{
+	void	*mlx;
+	void	*mlx_win;
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_img;
+
 typedef struct s_map
 {
 	t_object	*object;
 	t_path		*path;
+	t_img		*img;
 	char		*map_line;
 	char		**map;
 	int			width;
@@ -38,8 +51,9 @@ void	object_check(t_map *heap);
 void	accessible_check(t_map *heap, t_path *path);
 int		ft_path(int y, int x, t_path *path);
 void	ft_path_find(t_path *path);
-void	ft_path_put(t_path *path, int result);
+void	ft_path_put(int result);
 void	map_exit_check(int i, int j, t_path *path);
 void	ft_visited_clear(t_path *path);
+void	get_image(t_map *heap);
 
 #endif

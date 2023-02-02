@@ -26,14 +26,16 @@ int	main(int ag, char **av)
 	t_map		*heap;
 	t_object	*object;
 	t_path		*path;
-
+	t_img		*img;
 	if (ag == 2)
 	{
 		heap = malloc(sizeof(t_map));
 		object = malloc(sizeof(t_object));
 		path = malloc(sizeof(t_path));
+		img = malloc(sizeof(t_img));
 		heap->object = object;
 		heap->path = path;
+		heap->img = img;
 		heap->map_line = get_map(av[1]);
 		printf("%s\n", heap->map_line); //silinecek
 		heap->map = ft_split(heap->map_line, '\n');
@@ -45,6 +47,7 @@ int	main(int ag, char **av)
 		wall_check(heap);
 		object_check(heap);
 		accessible_check(heap, path);
+		get_image(heap);
 	}
 	else
 		return (0);

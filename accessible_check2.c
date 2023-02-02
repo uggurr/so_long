@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-void	ft_path_put(t_path *path, int result)
+void	ft_path_put(int result)
 {
 	static int	k;
 
@@ -85,5 +85,5 @@ void	ft_path_find(t_path *path)
 			}
 		}
 	}
-	ft_path_put(path, result);
+	ft_path_put(result);
 }
