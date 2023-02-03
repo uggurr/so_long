@@ -56,6 +56,7 @@ void	coin_check(t_map *heap)
 	int	j;
 
 	i = 0;
+	heap->object->c_count = 0;
 	while (heap->map[i])
 	{
 		j = 0;
@@ -67,6 +68,7 @@ void	coin_check(t_map *heap)
 		}
 		i++;
 	}
+	printf("%d",heap->object->c_count); //silinecek
 	if (heap->object->c_count < 1)
 	{
 		printf("There is no coin\n"); //ft_printf ile değiştir.
