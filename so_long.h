@@ -1,5 +1,7 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
+# define P "./textures/mario.xpm"
+# define G "./textures/mario.xpm"
 
 # include "get_next_line/get_next_line.h"
 # include "libft/libft.h"
@@ -14,7 +16,14 @@ typedef struct s_object
 	int	c_count;
 	int	e_count;
 }				t_object;
-
+// typedef struct s_temp
+// {
+// 	int		i;
+// 	int		j;
+// 	int		k;
+// 	int		l;
+// 	int		h;
+// }			t_temp;
 typedef struct s_path
 {
 	char	**visited;
@@ -29,8 +38,10 @@ typedef struct s_img
 	void	*mlx_win;
 	void	*img;
 	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
+	void	*graund;
+	void	*player;
+	int		x;
+	int		y;
 	int		endian;
 }				t_img;
 

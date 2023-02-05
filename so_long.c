@@ -27,12 +27,14 @@ int	main(int ag, char **av)
 	t_object	*object;
 	t_path		*path;
 	t_img		*img;
+	//t_temp		*temp;
 	if (ag == 2)
 	{
 		heap = malloc(sizeof(t_map));
 		object = malloc(sizeof(t_object));
 		path = malloc(sizeof(t_path));
 		img = malloc(sizeof(t_img));
+		//temp =malloc(sizeof(t_temp));
 		heap->object = object;
 		heap->path = path;
 		heap->img = img;
@@ -47,6 +49,8 @@ int	main(int ag, char **av)
 		wall_check(heap);
 		object_check(heap);
 		accessible_check(heap, path);
+		printf("merhaba %d\n",heap->height);
+		printf("selam %d\n",heap->width);
 		get_image(heap);
 	}
 	else
