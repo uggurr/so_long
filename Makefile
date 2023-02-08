@@ -67,6 +67,7 @@ SRCS        :=      accessible_check.c \
                           get_next_line/get_next_line.c \
                           accessible_check2.c \
                           opened_check.c \
+                          key_move.c \
                           
 OBJS        := $(SRCS:.c=.o)
 

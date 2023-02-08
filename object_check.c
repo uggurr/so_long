@@ -33,7 +33,11 @@ void	player_check(t_map *heap)
 		while (heap->map[i][j] != '\0')
 		{
 			if (heap->map[i][j] == 'P')
+			{
+				heap->img->p_x = i;
+				heap->img->p_y = j;
 				heap->object->p_count += 1;
+			}
 			j++;
 		}
 		i++;

@@ -39,6 +39,8 @@ typedef struct s_img
 	void	*coin;
 	void	*wall;
 	void	*exit;
+	int 	p_x;
+	int		p_y;
 	int		x;
 	int		y;
 	int		endian;
@@ -65,5 +67,7 @@ void	ft_path_put(int result);
 void	map_exit_check(int i, int j, t_path *path);
 void	ft_visited_clear(t_path *path);
 void	get_image(t_map *heap);
+int		key_move(int keycode, t_map *heap);
+void    ft_img_idx(t_map *heap);
 
 #endif

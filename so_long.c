@@ -49,8 +49,10 @@ int	main(int ag, char **av)
 		wall_check(heap);
 		object_check(heap);
 		accessible_check(heap, path);
-		printf("merhaba %d\n",heap->height);
-		printf("selam %d\n",heap->width);
+		printf("merhaba %d\n",heap->height); //silinecek
+		printf("selam %d\n",heap->width); //silinecek
+		printf("p_x : %d\n",heap->img->p_x); //silinecek
+		printf("p_y : %d\n",heap->img->p_y); //silinecek
 		get_image(heap);
 	}
 	else

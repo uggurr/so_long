@@ -77,6 +77,7 @@ void	ft_path_find(t_path *path)
 		{
 			if (path->matrix[i][j] == 'P' && path->visited[i][j] != '1')
 			{
+				
 				if (ft_path(i, j, path))
 				{
 					result = 1;
