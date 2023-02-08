@@ -19,6 +19,7 @@ char	*get_map(char *str)
 		i++;
 	}
 	return (map);
+	map_opened_check();
 }
 
 int	main(int ag, char **av)

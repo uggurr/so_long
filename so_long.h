@@ -67,6 +67,14 @@ typedef struct s_img
 	int		y;
 }				t_img;
 
+typedef struct s_open
+{
+	int	x;
+	int	y;
+	int	z;
+	int	j;
+	int	k;
+}			t_open;
 typedef struct s_map
 {
 	t_object	*object;
@@ -78,6 +86,7 @@ typedef struct s_map
 	int			height;
 }				t_map;
 
+void	map_opened_check();
 void	wall_check(t_map *heap);
 void	ft_error(t_map *heap);
 void	object_check(t_map *heap);
