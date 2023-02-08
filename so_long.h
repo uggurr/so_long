@@ -41,6 +41,8 @@ typedef struct s_img
 	void	*exit;
 	int 	p_x;
 	int		p_y;
+	int		p_coin;
+	int		point;
 	int		x;
 	int		y;
 	int		endian;
@@ -69,5 +71,7 @@ void	ft_visited_clear(t_path *path);
 void	get_image(t_map *heap);
 int		key_move(int keycode, t_map *heap);
 void    ft_img_idx(t_map *heap);
+int		close_game(t_map *heap);
+void    put_score(int point, t_map *heap);
 
 #endif

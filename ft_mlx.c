@@ -43,6 +43,7 @@ void    ft_img_idx(t_map *heap)
         i++;
         k +=64;
     }
+    put_score(heap->img->point,heap);
 }
 
 void    get_image(t_map *heap)
@@ -51,6 +52,7 @@ void    get_image(t_map *heap)
     heap->img->mlx_win = mlx_new_window(heap->img->mlx,heap->width * 64,heap->height * 64,"so_long");
     ft_img_addr(heap);
     ft_img_idx(heap);
-    mlx_hook(heap->img->mlx_win, 2, (1L << 0), key_move, &heap);
+    mlx_hook(heap->img->mlx_win, 2, (1L << 0), key_move, heap);
+    mlx_hook(heap->img->mlx_win, 17, 0L, close_game, heap);
     mlx_loop(heap->img->mlx);
 }
