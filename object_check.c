@@ -12,6 +12,7 @@ void	all_object_check(t_map *heap)
 			&& heap->map_line[i] != 'E'
 			&& heap->map_line[i] != '1'
 			&& heap->map_line[i] != '0'
+			&& heap->map_line[i] != 'D'
 			&& heap->map_line[i] != '\n')
 		{
 			printf("undefined character\n");  //ft_printf ile değiştir.

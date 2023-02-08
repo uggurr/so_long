@@ -1,5 +1,17 @@
 #include "so_long.h"
 
+void    player_direction(int keycode, t_map *heap)
+{
+    if (keycode == 13)
+        heap->img->player = mlx_xpm_file_to_image(heap->img->mlx,P1,&heap->img->x,&heap->img->y);
+    else if (keycode == 0)
+        heap->img->player = mlx_xpm_file_to_image(heap->img->mlx,P2,&heap->img->x,&heap->img->y);
+    else if (keycode == 1)
+        heap->img->player = mlx_xpm_file_to_image(heap->img->mlx,P,&heap->img->x,&heap->img->y);
+    else if (keycode == 2)
+        heap->img->player = mlx_xpm_file_to_image(heap->img->mlx,P3,&heap->img->x,&heap->img->y);
+}
+
 void    put_score(int point, t_map *heap)
 {
     char    *score;
@@ -25,7 +37,11 @@ void    move(t_map *heap, int x, int y)
         printf("Walk:%d\nWin!",heap->img->point += 1); //ft_printf ile değiştir
         close_game(heap);
     }
-    //düşman ekle
+    if (heap->map[x][y] == 'D')
+    {
+        printf("Lose!"); //ft_printf ile değiştir
+        close_game(heap);
+    }
     if (heap->map[x][y] != '1' && heap->map[x][y] != 'E')
     {
         if (heap->map[x][y] == 'C')
@@ -38,7 +54,7 @@ void    move(t_map *heap, int x, int y)
 int		key_move(int keycode, t_map *heap)
 {
     mlx_clear_window(heap->img->mlx, heap->img->mlx_win);
-    //player direction ekle
+    player_direction(keycode, heap);
     if (keycode == 13)
         move(heap, heap->img->p_x - 1, heap->img->p_y);
     else if (keycode == 0)

@@ -68,6 +68,7 @@ SRCS        :=      accessible_check.c \
                           accessible_check2.c \
                           opened_check.c \
                           key_move.c \
+                          animation.c \
                           
 OBJS        := $(SRCS:.c=.o)
 
