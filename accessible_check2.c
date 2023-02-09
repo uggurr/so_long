@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-void	ft_path_put(int result)
+void	ft_path_put(t_map *heap,int result)
 {
 	static int	k;
 
@@ -14,7 +14,7 @@ void	ft_path_put(int result)
 	{
 		printf("[X] Hatalı harita ");
 		printf("coinler toplanamıyor ya da çıkışa erişilemiyor\n");
-		exit (0);
+		ft_error(heap);
 	}
 }
 
@@ -61,24 +61,24 @@ void	ft_visited_clear(t_path *path)
 	}
 }
 
-void	ft_path_find(t_path *path)
+void	ft_path_find(t_map *heap)
 {
 	int	result;
 	int	i;
 	int	j;
 
-	ft_visited_clear(path);
+	ft_visited_clear(heap->path);
 	result = 0;
 	i = -1;
-	while (++i < path->mat_y)
+	while (++i < heap->path->mat_y)
 	{
 		j = -1;
-		while (++j < path->mat_x)
+		while (++j < heap->path->mat_x)
 		{
-			if (path->matrix[i][j] == 'P' && path->visited[i][j] != '1')
+			if (heap->path->matrix[i][j] == 'P' && heap->path->visited[i][j] != '1')
 			{
 				
-				if (ft_path(i, j, path))
+				if (ft_path(i, j, heap->path))
 				{
 					result = 1;
 					break ;
@@ -86,5 +86,5 @@ void	ft_path_find(t_path *path)
 			}
 		}
 	}
-	ft_path_put(result);
+	ft_path_put(heap, result);
 }

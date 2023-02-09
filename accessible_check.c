@@ -1,45 +1,45 @@
 #include "so_long.h"
 
-void	map_exit_check(int i, int j, t_path *path)
+void	map_exit_check(int i, int j, t_map *heap)
 {
-	path->matrix[i][j] = 'F';
-	ft_path_find(path);
+	heap->path->matrix[i][j] = 'F';
+	ft_path_find(heap);
 }
 
-void	init_matrix(int exit_i, int exit_j, t_path *path)
+void	init_matrix(int exit_i, int exit_j, t_map *heap)
 {
 	int			i;
 	int			j;
 
 	i = -1;
-	while (path->matrix[++i])
+	while (heap->path->matrix[++i])
 	{
 		j = -1;
-		while (path->matrix[i][++j])
+		while (heap->path->matrix[i][++j])
 		{
-			if (path->matrix[i][j] == 'E')
+			if (heap->path->matrix[i][j] == 'E')
 			{
 				exit_i = i;
 				exit_j = j;
-				path->matrix[i][j] = '1';
+				heap->path->matrix[i][j] = '1';
 			}
-			if (path->matrix[i][j] == 'C')
+			if (heap->path->matrix[i][j] == 'C')
 			{
-				path->matrix[i][j] = 'F';
-				ft_path_find(path);
-				path->matrix[i][j] = 'C';
+				heap->path->matrix[i][j] = 'F';
+				ft_path_find(heap);
+				heap->path->matrix[i][j] = 'C';
 			}
 		}
 	}
-	map_exit_check(exit_i, exit_j, path);
+	map_exit_check(exit_i, exit_j, heap);
 }
 
-void	accessible_check(t_map *heap, t_path *path)
+void	accessible_check(t_map *heap)
 {
 	static int	exit_i;
 	static int	exit_j;
 
-	path->mat_y = heap->height;
-	path->mat_x = heap->width;
-	init_matrix(exit_i, exit_j, path);
+	heap->path->mat_y = heap->height;
+	heap->path->mat_x = heap->width;
+	init_matrix(exit_i, exit_j, heap);
 }
