@@ -8,6 +8,18 @@ char	*get_map(char *str)
 	int		fd;
 
 	fd = open(str, O_RDONLY);
+	if (fd < 0)
+	{
+		printf("file not found"); //ft_printf ile değiştir.
+		close(fd);
+		exit(0);
+	}
+	i = ft_strlen(str) - 1;
+	if (str[i] != 'r' || str[i - 1] != 'e' || str[i - 2] != 'b' || str[i - 3] != '.')
+	{
+		printf(".ber File Not Found!"); //ft_printf ile değiştir
+		exit(0);
+	}
 	map = NULL;
 	get_line = NULL;
 	i = 0;
