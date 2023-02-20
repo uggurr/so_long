@@ -1,4 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: uguyildi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/20 17:53:59 by uguyildi          #+#    #+#             */
+/*   Updated: 2023/02/20 17:54:03 by uguyildi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
+
+void	ft_bercheck(char *str)
+{
+	int	i;
+
+	i = ft_strlen(str) - 1;
+	if (str[i] != 'r' || str[i - 1] != 'e' || str[i - 2] != 'b'
+		|| str[i - 3] != '.')
+	{
+		ft_printf(".ber File Not Found!");
+		exit(0);
+	}
+}
 
 char	*get_map(char *str)
 {
@@ -10,26 +35,20 @@ char	*get_map(char *str)
 	fd = open(str, O_RDONLY);
 	if (fd < 0)
 	{
-		printf("file not found"); //ft_printf ile değiştir.
+		ft_printf("file not found");
 		close(fd);
 		exit(0);
 	}
-	i = ft_strlen(str) - 1;
-	if (str[i] != 'r' || str[i - 1] != 'e' || str[i - 2] != 'b' || str[i - 3] != '.')
-	{
-		printf(".ber File Not Found!"); //ft_printf ile değiştir
-		exit(0);
-	}
+	ft_bercheck(str);
 	map = NULL;
 	get_line = NULL;
-	i = 0;
-	while (get_line != NULL || i == 0)
+	i = -1;
+	while (get_line != NULL || ++i == 0)
 	{
 		get_line = get_next_line(fd);
 		if (get_line != NULL)
 			map = ft_gnl_strjoin(map, get_line);
 		free(get_line);
-		i++;
 	}
 	return (map);
 	map_opened_check();
@@ -41,6 +60,7 @@ int	main(int ag, char **av)
 	t_object	*object;
 	t_path		*path;
 	t_img		*img;
+
 	if (ag == 2)
 	{
 		heap = malloc(sizeof(t_map));

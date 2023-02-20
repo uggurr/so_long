@@ -1,19 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   accessible_check2.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: uguyildi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/20 17:51:17 by uguyildi          #+#    #+#             */
+/*   Updated: 2023/02/20 17:51:20 by uguyildi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-void	ft_path_put(t_map *heap,int result)
+void	ft_path_put(t_map *heap, int result)
 {
 	static int	k;
 
 	if (result)
 	{
 		k++;
-		printf ("[%d] ", k);
-		printf("kontrol aşamaları ... Başarılı\n");
+		ft_printf ("[%d] ", k);
+		ft_printf("kontrol aşamaları ... Başarılı\n");
 	}
 	else
 	{
-		printf("[X] Hatalı harita ");
-		printf("coinler toplanamıyor ya da çıkışa erişilemiyor\n");
+		ft_printf("[X] Hatalı harita ");
+		ft_printf("coinler toplanamıyor ya da çıkışa erişilemiyor\n");
 		ft_error(heap);
 	}
 }
@@ -75,9 +87,9 @@ void	ft_path_find(t_map *heap)
 		j = -1;
 		while (++j < heap->path->mat_x)
 		{
-			if (heap->path->matrix[i][j] == 'P' && heap->path->visited[i][j] != '1')
+			if (heap->path->matrix[i][j] == 'P' &&
+				heap->path->visited[i][j] != '1')
 			{
-				
 				if (ft_path(i, j, heap->path))
 				{
 					result = 1;

@@ -1,19 +1,6 @@
-#  |  |  ___ \    \  |         |
-#  |  |     ) |  |\/ |   _  |  |  /   _ 
-# ___ __|  __/   |   |  (   |    <    __/ 
-#    _|  _____| _|  _| \__,_| _|\_\ \___|
-#                              by jcluzet
-################################################################################
-#                                     CONFIG                                   #
-################################################################################
-
 NAME        := erso_long
 CC        := gcc
-FLAGS    := -Wall -Wextra -Werror 
-
-################################################################################
-#                                 PROGRAM'S SRCS                               #
-################################################################################
+FLAGS    := -Wall -Wextra -Werror
 
 SRCS        :=      accessible_check.c \
                           libft/ft_strnstr.c \
@@ -58,28 +45,30 @@ SRCS        :=      accessible_check.c \
                           libft/ft_lstdelone.c \
                           libft/ft_itoa.c \
                           libft/ft_tolower.c \
+                          ft_printf/ft_low_x.c \
+                          ft_printf/ft_printf.c \
+                          ft_printf/ft_putchar.c \
+                          ft_printf/ft_putnbr.c \
+                          ft_printf/ft_putstr.c \
+                          ft_printf/ft_unsigned.c \
+                          ft_printf/ft_upp_x.c \
+                          ft_printf/ft_void_pointer.c \
                           object_check.c \
                           wall_check.c \
                           ft_mlx.c \
                           so_long.c \
-                          errror.c \
+                          error.c \
                           get_next_line/get_next_line_utils.c \
                           get_next_line/get_next_line.c \
                           accessible_check2.c \
                           opened_check.c \
                           key_move.c \
                           animation.c \
-                          
+
 OBJS        := $(SRCS:.c=.o)
 
 .c.o:
 	${CC} ${FLAGS} -c $< -o ${<:.c=.o}
-
-################################################################################
-#                                  Makefile  objs                              #
-################################################################################
-
-
 CLR_RMV		:= \033[0m
 RED		    := \033[1;31m
 GREEN		:= \033[1;32m
@@ -128,7 +117,7 @@ endif
 ifeq ($(UNAME), Linux)
 fclean:		clean
 			@ ${RM} ${NAME}
-			@ $(MAKE) -C mlx_linux clean 
+			@ $(MAKE) -C mlx_linux clean
 			@ echo "$(RED)Deleting $(CYAN)$(NAME) $(CLR_RMV)binary ✔️"
 endif
 

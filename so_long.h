@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: uguyildi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/20 17:54:12 by uguyildi          #+#    #+#             */
+/*   Updated: 2023/02/20 17:54:15 by uguyildi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 # define P "./textures/characterDown.xpm"
@@ -22,15 +34,12 @@
 # define D4 "./textures/ENEMY5.xpm"
 # define D5 "./textures/ENEMY6.xpm"
 # define D6 "./textures/ENEMY7.xpm"
-
-
-
 # include "get_next_line/get_next_line.h"
 # include "libft/libft.h"
+# include "ft_printf/ft_printf.h"
 # include <stdio.h>
 # include <fcntl.h>
 # include <stdlib.h>
-# include "./mlx/mlx.h"
 
 typedef struct s_object
 {
@@ -59,7 +68,7 @@ typedef struct s_img
 	void	*wall;
 	void	*exit;
 	void	*enemy;
-	int 	p_x;
+	int		p_x;
 	int		p_y;
 	int		p_coin;
 	int		point;
@@ -86,7 +95,7 @@ typedef struct s_map
 	int			height;
 }				t_map;
 
-void	map_opened_check();
+void	map_opened_check(void);
 void	wall_check(t_map *heap);
 void	ft_error(t_map *heap);
 void	object_check(t_map *heap);
@@ -98,9 +107,9 @@ void	map_exit_check(int i, int j, t_map *heap);
 void	ft_visited_clear(t_path *path);
 void	get_image(t_map *heap);
 int		key_move(int keycode, t_map *heap);
-void    ft_img_idx(t_map *heap);
+void	ft_img_idx(t_map *heap);
 int		close_game(t_map *heap);
-void    put_score(int point, t_map *heap);
+void	put_score(int point, t_map *heap);
 int		loop_img(t_map *heap);
 
 #endif
