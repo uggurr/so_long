@@ -13,30 +13,14 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 # define P "./textures/characterDown.xpm"
-# define P1 "./textures/characterAbove.xpm"
-# define P2 "./textures/characterLeft.xpm"
-# define P3 "./textures/characterRight.xpm"
 # define G "./textures/BG.xpm"
 # define W "./textures/wall1.xpm"
 # define C "./textures/coingif1.xpm"
-# define C1 "./textures/coingif2.xpm"
-# define C2 "./textures/coingif3.xpm"
-# define C3 "./textures/coingif4.xpm"
-# define C4 "./textures/coingif5.xpm"
-# define C5 "./textures/coingif6.xpm"
-# define C6 "./textures/coingif7.xpm"
 # define E "./textures/EXIT1.xpm"
-# define E1 "./textures/EXIT2.xpm"
-# define D "./textures/ENEMY1.xpm"
-# define D1 "./textures/ENEMY2.xpm"
-# define D2 "./textures/ENEMY3.xpm"
-# define D3 "./textures/ENEMY4.xpm"
-# define D4 "./textures/ENEMY5.xpm"
-# define D5 "./textures/ENEMY6.xpm"
-# define D6 "./textures/ENEMY7.xpm"
 # include "get_next_line/get_next_line.h"
 # include "libft/libft.h"
 # include "ft_printf/ft_printf.h"
+# include "./mlx/mlx.h"
 # include <stdio.h>
 # include <fcntl.h>
 # include <stdlib.h>
@@ -98,6 +82,7 @@ typedef struct s_map
 void	map_opened_check(void);
 void	wall_check(t_map *heap);
 void	ft_error(t_map *heap);
+void	ft_error_null_map(t_map *heap);
 void	object_check(t_map *heap);
 void	accessible_check(t_map *heap);
 int		ft_path(int y, int x, t_path *path);
@@ -110,6 +95,5 @@ int		key_move(int keycode, t_map *heap);
 void	ft_img_idx(t_map *heap);
 int		close_game(t_map *heap);
 void	put_score(int point, t_map *heap);
-int		loop_img(t_map *heap);
 
 #endif

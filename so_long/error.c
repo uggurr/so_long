@@ -46,6 +46,17 @@ int	close_game(t_map *heap)
 	exit(0);
 }
 
+void	ft_error_null_map(t_map *heap)
+{
+	free(heap->path);
+	free(heap->img);
+	free(heap->object);
+	free(heap);
+	ft_printf("No maps\n");
+	ft_printf("Error");
+	exit(0);
+}
+
 void	ft_error(t_map *heap)
 {
 	int	i;

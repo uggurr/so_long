@@ -39,7 +39,6 @@ char	*get_map(char *str)
 		close(fd);
 		exit(0);
 	}
-	ft_bercheck(str);
 	map = NULL;
 	get_line = NULL;
 	i = -1;
@@ -52,6 +51,23 @@ char	*get_map(char *str)
 	}
 	return (map);
 	map_opened_check();
+}
+
+void	creat_map(t_map *heap)
+{
+	heap->map = ft_split(heap->map_line, '\n');
+	heap->path->matrix = ft_split(heap->map_line, '\n');
+	heap->path->visited = ft_split(heap->map_line, '\n');
+}
+
+void	ft_direction(char *str, t_map *heap)
+{
+	ft_bercheck(str);
+	creat_map(heap);
+	wall_check(heap);
+	object_check(heap);
+	accessible_check(heap);
+	get_image(heap);
 }
 
 int	main(int ag, char **av)
@@ -71,13 +87,9 @@ int	main(int ag, char **av)
 		heap->path = path;
 		heap->img = img;
 		heap->map_line = get_map(av[1]);
-		heap->map = ft_split(heap->map_line, '\n');
-		heap->path->matrix = ft_split(heap->map_line, '\n');
-		heap->path->visited = ft_split(heap->map_line, '\n');
-		wall_check(heap);
-		object_check(heap);
-		accessible_check(heap);
-		get_image(heap);
+		if (heap->map_line == NULL)
+			ft_error_null_map(heap);
+		ft_direction(av[1], heap);
 	}
 	else
 		return (0);
